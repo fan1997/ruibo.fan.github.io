@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruibo Fan - Academic Profile</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #f0f4f8;
+            --text-color: #2d3748;
+            --light-gray: #f5f7fa;
+            --border-color: #e2e8f0;
+            --accent-color: #3b82f6;
+            --visited-link: #6366f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Merriweather', Georgia, serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.7;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background-color: #fff;
+            font-size: 16px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            padding: 50px 0 30px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border-color);
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            padding: 5px 10px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 768px) {
+            .profile-container {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 40px;
+            }
+        }
+        
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 4px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .profile-pic svg {
+            width: 120px;
+            height: 120px;
+            fill: #6a737d;
+        }
+        
+        .profile-info {
+            max-width: 700px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-family: 'Merriweather', Georgia, serif;
+        }
+        
+        .position {
+            font-size: 1.3rem;
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-style: italic;
+            font-weight: 400;
+        }
+        
+        .institution {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 0.95rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary-color);
+        }
+        
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        main {
+            flex: 1;
+            margin-bottom: 40px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--primary-color);
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .news-item {
+            margin-bottom: 25px;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+        
+        .news-date {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 5px;
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .news-content {
+            margin-bottom: 5px;
+        }
+        
+        .news-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .news-content a:visited {
+            color: var(--visited-link);
+        }
+        
+        .news-content a:hover {
+            text-decoration: underline;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        .education-item, .experience-item {
+            margin-bottom: 25px;
+        }
+        
+        .education-item h3, .experience-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #4a5568;
+        }
+        
+        .institution-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .edu-institution {
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .date {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .location {
+            color: #718096;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .publication-item {
+            padding: 20px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .publication-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .publication-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .publication-authors {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            font-weight: bold;
+        }
+        
+        .publication-venue {
+            font-style: italic;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #4a5568;
+        }
+        
+        .publication-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: #718096;
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin-top: 10px;
+        }
+        
+        .publication-info {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .research-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .interest-tag {
+            background-color: var(--secondary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .project-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .project-item:last-child {
+            border-bottom: none;
+        }
+        
+        .project-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #4a5568;
+        }
+        
+        .project-date {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: #718096;
+            font-size: 0.9rem;
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white !important;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            transition: background-color 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: white !important;
+            text-decoration: none !important;
+        }
+        
+        .btn-small {
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+        
+        /* About section bio */
+        .bio {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        /* Additional news styles for hiding/showing */
+        .hidden-news {
+            display: none;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        /* Add styles for advisor info */
+        .advisor-info {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .advisor-name {
+            font-weight: 600;
+        }
+        
+        .secondary-advisor {
+            margin-top: 5px;
+            color: #4a5568;
+        }
+        
+        /* Badge styles for artifacts */
+        .badges {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: #ebf5ff;
+            color: #3182ce;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            border: 1px solid #bee3f8;
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        /* Hidden publications for "View All" functionality */
+        .hidden-publications {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <div class="profile-pic">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/>
+                    </svg>
+                </div>
+                <div class="profile-info">
+                    <h1>Ruibo Fan</h1>
+                    <p class="position">Ph.D. Candidate</p>
+                    <p class="institution">Hong Kong University of Science and Technology (Guangzhou)</p>
+                    <p>
+                        I am a Ph.D. candidate at HKUST(GZ) working with <a href="https://sites.google.com/view/chuxiaowen/">Prof. Xiaowen Chu</a> (primary advisor) and <a href="https://cse.hkust.edu.hk/~weiwa/">Prof. Wei Wang</a> (co-advisor, HKUST CSE Department). My research focuses on high-performance computing, GPU architecture analysis and optimization, sparse matrix computation, and graph neural network acceleration.
+                    </p>
+                    <div class="contact-info">
+                        <a href="mailto:ruibo.fan@connect.hkust-gz.edu.cn" class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" fill="currentColor"/>
+                            </svg>
+                            Email
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=m1haUFQAAAAJ&hl=en" class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 6.5-31.8 24.1-74.9 24.1-86.2 0-105.9-61.5-105.9-108.2 0-47.6 22.6-103.6 110.3-103.6 77.5 0 106.9 54.8 106.9 109.8 0 53.5-50.3 100.8-50.3 100.8H296l21.3-25.9c3.8-4.6 5.5-10.5 4.6-16.4-4.3-29.6-39.3-63.1-101.6-63.1-48.8 0-96.3 28.8-96.3 94.8 0 67.7 57.8 89.9 92.6 89.9 45.2 0 69.2-22.4 80.3-39.2l41.7 36.9z" fill="currentColor"/>
+                            </svg>
+                            Google Scholar
+                        </a>
+                        <a href="https://github.com/fan1997" class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" fill="currentColor"/>
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="#" class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 336H48V112h416v288z" fill="currentColor"/>
+                            </svg>
+                            Curriculum Vitae
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#news">News</a>
+                <a href="#publications">Publications</a>
+                <a href="#research">Research</a>
+                <a href="#education">Education</a>
+                <a href="#awards">Awards</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="about">
+                <h2>About</h2>
+                <div class="bio">
+                    <p>I am a 3rd-year Ph.D. candidate at the Hong Kong University of Science and Technology (Guangzhou) advised by Professor Xiaowen Chu and co-advised by Professor Wei Wang (HKUST CSE Department). My research interests lie in high-performance computing, particularly focused on GPU architecture and optimization. I am currently investigating methods to accelerate sparse matrix operations and graph neural networks on modern GPU architectures.</p>
+                    
+                    <p>Prior to joining HKUST(GZ), I received my Master's degree from Peking University (2019-2022) at the Academy for Advanced Interdisciplinary Studies, and my Bachelor's degree from Huazhong University of Science and Technology (2015-2019) in the School of Artificial Intelligence and Automation.</p>
+                    
+                    <p>I am passionate about bridging the gap between theoretical computer architecture and practical performance optimization for real-world applications. My goal is to develop efficient algorithms and systems that can fully utilize modern hardware capabilities to accelerate computational workloads across various domains including AI, scientific computing, and large-scale data processing.</p>
+                </div>
+                
+                <h3>Research Interests</h3>
+                <div class="research-interests">
+                    <span class="interest-tag">GPU Architecture</span>
+                    <span class="interest-tag">Parallel Computing</span>
+                    <span class="interest-tag">Sparse Matrix Operations</span>
+                    <span class="interest-tag">Graph Neural Networks</span>
+                    <span class="interest-tag">High-Performance Computing</span>
+                    <span class="interest-tag">Deep Learning Systems</span>
+                </div>
+            </section>
+
+            <section id="news">
+                <h2>News & Updates</h2>
+                
+                <div class="news-item">
+                    <p class="news-date">February 2025</p>
+                    <p class="news-content">SpInfer has passed the artifact evaluation and received 3 badges at EuroSys 2025!</p>
+                    <div class="badges">
+                        <span class="badge">Available</span>
+                        <span class="badge">Functional</span>
+                        <span class="badge">Reproducible</span>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">January 2025</p>
+                    <p class="news-content">Our paper "<a href="#">SpInfer: Leveraging Low-Level Sparsity for Efficient Large Language Model Inference on GPUs</a>" has been accepted by EuroSys 2025. Congratulations to all co-authors! (30 papers were accepted out of 367 new submissions in this Fall Submission round)</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">January 2025</p>
+                    <p class="news-content">Our collaborative work "<a href="#">StbLLM: Breaking the 1-bit barrier with structured binary LLMs</a>" has been accepted to ICLR 2025!</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">January 2025</p>
+                    <p class="news-content">Our preprint "<a href="#">Dissecting the NVIDIA Hopper Architecture through Microbenchmarking and Multiple Level Analysis</a>" is now available on arXiv.</p>
+                </div>
+                
+                <div id="more-news" class="hidden-news">
+                    <div class="news-item">
+                        <p class="news-date">February 2024</p>
+                        <p class="news-content">Our paper "<a href="#">DTC-SpMM: Bridging the Gap in Accelerating General Sparse Matrix Multiplication with Tensor Cores</a>" has been accepted to ASPLOS 2024!</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <p class="news-date">July 2024</p>
+                        <p class="news-content">Received the Best Speaker Award at the DSA Launch Salon.</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <p class="news-date">February 2024</p>
+                        <p class="news-content">Our paper "<a href="#">Benchmarking and Dissecting the NVIDIA Hopper GPU Architecture</a>" has been accepted to IPDPS 2024.</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <p class="news-date">October 2024</p>
+                        <p class="news-content">Honored to receive the DSA Runner-up Research Prize for our work on GPU architecture optimization.</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <p class="news-date">January 2023</p>
+                        <p class="news-content">Our paper "<a href="#">Fast Sparse GPU Kernels for Accelerated Training of Graph Neural Networks</a>" has been accepted to IPDPS 2023.</p>
+                    </div>
+                </div>
+                
+                <button id="view-news-btn" class="btn btn-small">View All News</button>
+            </section>
+
+            <section id="publications">
+                <h2>Publications</h2>
+                <div class="publications-list">
+                    <div class="publication-item">
+                        <h3 class="publication-title">SpInfer: Leveraging Low-Level Sparsity for Efficient Large Language Model Inference on GPUs</h3>
+                        <p class="publication-authors"><span class="highlight">R. Fan</span>, D. Du, Z. Li, W. Luo, X. Chu, W. Wang</p>
+                        <p class="publication-venue">ACM European Conference on Computer Systems (EuroSys), 2025</p>
+                        <div class="publication-stats">
+                            <span class="publication-info">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14" height="14">
+                                    <path d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z" fill="currentColor"/>
+                                </svg>
+                                2025
+                            </span>
+                            <a href="https://dl.acm.org/doi/10.1145/3689031.3717481" class="btn btn-small">PDF</a>
+                            <a href="https://github.com/HPMLL/SpInfer_EuroSys25" class="btn btn-small">Code</a>
+                        </div>
+                    </div>
+                    
+                    <div class="publication-item">
+                        <h3 class="publication-title">StbLLM: Breaking the 1-bit Barrier with Structured Binary LLMs</h3>
+                        <p class="publication-authors">P. Dong, L. Li, Y. Zhong, D. Du, <span class="highlight">R. Fan</span>, Y. Chen, Z. Tang, Q. Wang, W. Xue, et al.</p>
+                        <p class="publication-venue">International Conference on Learning Representations (ICLR), 2025</p>
+                        <div class="publication-stats">
+                            <span class="publication-info">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14" height="14">
+                                    <path d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z" fill="currentColor"/>
+                                </svg>
+                                2025
+                            </span>
+                            <a href="https://arxiv.org/abs/2408.01803" class="btn btn-small">PDF</a>
+                            <a href="#" class="btn btn-small">Code</a>
+                        </div>
+                    </div>
+                    
+                    <div class="publication-item">
+                        <h3 class="publication-title">Dissecting the NVIDIA Hopper Architecture through Microbenchmarking and Multiple Level Analysis</h3>
+                        <p class="publication-authors">W. Luo, <span class="highlight">R. Fan</span>, Z. Li, D. Du, H. Liu, Q. Wang, X. Chu</p>
+                        <p class="publication-venue">arXiv preprint</p>
+                        <div class="publication-stats">
+                            <span class="publication-info">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14" height="14">
+                                    <path d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z" fill="currentColor"/>
+                                </svg>
+                                2025
+                            </span>
+                            <a href="https://arxiv.org/abs/2501.12084" class="btn btn-small">Preprint</a>
+                        </div>
+                    </div>
+                    
+                    <div class="publication-item">
+                        <h3 class="publication-title">DTC-SpMM: Bridging the Gap in Accelerating General Sparse Matrix Multiplication with Tensor Cores</h3>
+                        <p class="publication-authors"><span class="highlight">R. Fan</span>, W. Wang, X. Chu</p>
+                        <p class="publication-venue">Proceedings of the 29th ACM International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)</p>
+                        <div class="publication-stats">
+                            <span class="publication-info">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14" height="14">
+                                    <path d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z" fill="currentColor"/>
+                                </svg>
+                                2024
+                            </span>
+                            <a href="https://dl.acm.org/doi/abs/10.1145/3620666.3651378" class="btn btn-small">PDF</a>
+                            <a href="https://github.com/HPMLL/DTC-SpMM_ASPLOS24" class="btn btn-small">Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="more-publications" class="hidden-publications">
+                    <div class="publications-list">
+                        <div class="publication-item">
+                            <h3 class="publication-title">Benchmarking and Dissecting the NVIDIA Hopper GPU Architecture</h3>
+                            <p class="publication-authors">W. Luo, <span class="highlight">R. Fan</span>, Z. Li, D. Du, Q. Wang, X. Chu</p>
+                            <p class="publication-venue">2024 IEEE International Parallel and Distributed Processing Symposium (IPDPS)</p>
+                            <div class="publication-stats">
+                                <span class="publication-info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14" height="14">
+                                        <path d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z" fill="currentColor"/>
+                                    </svg>
+                                    2024
+                                </span>
+                                <a href="https://ieeexplore.ieee.org/document/10579250" class="btn btn-small">PDF</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <h3 class="publication-title">Fast Sparse GPU Kernels for Accelerated Training of Graph Neural Networks</h3>
+                            <p class="publication-authors"><span class="highlight">R. Fan</span>, W. Wang, X. Chu</p>
+                            <p class="publication-venue">2023 IEEE International Parallel and Distributed Processing Symposium (IPDPS)</p>
+                            <div class="publication-stats">
+                                <span class="publication-info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14" height="14">
+                                        <path d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z" fill="currentColor"/>
+                                    </svg>
+                                    2023
+                                </span>
+                                <a href="https://ieeexplore.ieee.org/document/10177444" class="btn btn-small">PDF</a>
+                                <a href="https://github.com/HPMLL/HP-SpMM" class="btn btn-small">Code</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <h3 class="publication-title">Dissecting the Runtime Performance of the Training, Fine-tuning, and Inference of Large Language Models</h3>
+                            <p class="publication-authors">L. Zhang, X. Liu, Z. Li, X. Pan, P. Dong, <span class="highlight">R. Fan</span>, R. Guo, X. Wang, Q. Luo, S. Shi, et al.</p>
+                            <p class="publication-venue">Under review</p>
+                            <div class="publication-stats">
+                                <span class="publication-info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14" height="14">
+                                        <path d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z" fill="currentColor"/>
+                                    </svg>
+                                    2023
+                                </span>
+                                <a href="https://arxiv.org/abs/2311.03687" class="btn btn-small">Preprint</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="view-pubs-btn" class="btn">View All Publications</button>
+            </section>
+            
+            <section id="research">
+                <h2>Research Projects</h2>
+                
+                <div class="project-item">
+                    <h3>Efficient Large Language Model Inference with Sparsity</h3>
+                    <p class="project-date">2024 - Present</p>
+                    <p>Developing SpInfer, a system that leverages low-level sparsity patterns in LLM computations to accelerate inference on GPUs. Our approach identifies and exploits sparsity opportunities at different levels of the inference pipeline, achieving significant speedups over state-of-the-art inference engines.</p>
+                </div>
+                
+                <div class="project-item">
+                    <h3>Optimizing Sparse Matrix Operations with Tensor Cores</h3>
+                    <p class="project-date">2023 - 2024</p>
+                    <p>Developed novel techniques to leverage GPU tensor cores for accelerating sparse matrix multiplication operations, with applications in deep learning frameworks and scientific computing. Our DTC-SpMM approach significantly outperforms state-of-the-art implementations across various sparsity patterns.</p>
+                </div>
+                
+                <div class="project-item">
+                    <h3>Comprehensive Analysis of NVIDIA Hopper Architecture</h3>
+                    <p class="project-date">2022 - 2024</p>
+                    <p>Conducted in-depth analysis and microbenchmarking of NVIDIA's Hopper GPU architecture to understand performance characteristics, memory hierarchy, and execution behavior. This work provides insights for both system designers and application developers on effectively utilizing this latest architecture.</p>
+                </div>
+                
+                <div class="project-item">
+                    <h3>Accelerating Graph Neural Networks with Optimized GPU Kernels</h3>
+                    <p class="project-date">2021 - 2023</p>
+                    <p>Designed specialized GPU kernels for sparse operations in graph neural networks, focusing on the performance bottlenecks in message passing and aggregation phases. Our approach achieves up to 2.7× speedup over existing frameworks for GNN training.</p>
+                </div>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>Ph.D. in Computer Science and Engineering</h3>
+                    <div class="institution-info">
+                        <span class="edu-institution">Hong Kong University of Science and Technology (Guangzhou)</span>
+                        <span class="date">2022 - Present</span>
+                    </div>
+                    <p class="location">Guangzhou, China</p>
+                    <div class="advisor-info">
+                        <p>Primary Advisor: <span class="advisor-name">Prof. Xiaowen Chu</span></p>
+                        <p class="secondary-advisor">Co-Advisor: <span class="advisor-name">Prof. Wei Wang</span> (HKUST CSE Department)</p>
+                    </div>
+                    <p>Research Focus: GPU Computing, Parallel Computing, Computer Architecture</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3>M.S. in Computer Science</h3>
+                    <div class="institution-info">
+                        <span class="edu-institution">Peking University, Academy for Advanced Interdisciplinary Studies</span>
+                        <span class="date">2019 - 2022</span>
+                    </div>
+                    <p class="location">Beijing, China</p>
+                    <p>Thesis: "Optimization Techniques for Sparse Computation on Modern GPUs"</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3>B.E. in Artificial Intelligence</h3>
+                    <div class="institution-info">
+                        <span class="edu-institution">Huazhong University of Science and Technology</span>
+                        <span class="date">2015 - 2019</span>
+                    </div>
+                    <p class="location">Wuhan, China</p>
+                    <p>School of Artificial Intelligence and Automation</p>
+                </div>
+            </section>
+            
+            <!-- <section id="awards">
+                <h2>Awards & Honors</h2>
+                
+                <div class="education-item">
+                    <h3>Artifact Evaluation Badges (Available, Functional, Reproducible)</h3>
+                    <div class="institution-info">
+                        <span class="edu-institution">EuroSys 2025 for SpInfer</span>
+                        <span class="date">2025</span>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <h3>Best Speaker Award</h3>
+                    <div class="institution-info">
+                        <span class="edu-institution">DSA Launch Salon</span>
+                        <span class="date">2024</span>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <h3>DSA Runner-up Research Prize</h3>
+                    <div class="institution-info">
+                        <span class="edu-institution">Data Systems and Applications</span>
+                        <span class="date">2024</span>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <h3>Outstanding Student Paper Award</h3>
+                    <div class="institution-info">
+                        <span class="edu-institution">IEEE International Parallel and Distributed Processing Symposium (IPDPS)</span>
+                        <span class="date">2024</span>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <h3>HKUST(GZ) Presidential Fellowship</h3>
+                    <div class="institution-info">
+                        <span class="edu-institution">Hong Kong University of Science and Technology (Guangzhou)</span>
+                        <span class="date">2022 - 2025</span>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <h3>Student Travel Grant</h3>
+                    <div class="institution-info">
+                        <span class="edu-institution">ACM ASPLOS Conference</span>
+                        <span class="date">2024</span>
+                    </div>
+                </div>
+            </section> -->
+        </main>
+
+        <footer>
+            <p>© 2025 Ruibo Fan. Last updated: March 2025</p>
+            <p>This website was developed in HTML/CSS by the owner. Template design inspired by academic websites from top universities.</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // View All News button functionality
+            const viewNewsBtn = document.getElementById('view-news-btn');
+            const moreNews = document.getElementById('more-news');
+            
+            viewNewsBtn.addEventListener('click', function() {
+                if (moreNews.classList.contains('hidden-news')) {
+                    moreNews.classList.remove('hidden-news');
+                    moreNews.classList.add('show');
+                    viewNewsBtn.textContent = 'Show Less';
+                } else {
+                    moreNews.classList.remove('show');
+                    moreNews.classList.add('hidden-news');
+                    viewNewsBtn.textContent = 'View All News';
+                }
+            });
+            
+            // View All Publications button functionality
+            const viewPubsBtn = document.getElementById('view-pubs-btn');
+            const morePubs = document.getElementById('more-publications');
+            
+            viewPubsBtn.addEventListener('click', function() {
+                if (morePubs.classList.contains('hidden-publications')) {
+                    morePubs.classList.remove('hidden-publications');
+                    morePubs.classList.add('show');
+                    viewPubsBtn.textContent = 'Show Less';
+                } else {
+                    morePubs.classList.remove('show');
+                    morePubs.classList.add('hidden-publications');
+                    viewPubsBtn.textContent = 'View All Publications';
+                }
+            });
+            
+            // Simple script to highlight current section in navigation
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if(pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Make email links work properly
+            document.querySelector('a[href^="mailto:"]').setAttribute('href', 'mailto:ruibo.fan@connect.hkust-gz.edu.cn');
+        });
+    </script>
+</body>
+</html>
